@@ -23,25 +23,37 @@ public class SpringConfig {
 //        this.dataSource = dataSource;
 //    }
 
-    private EntityManager em;
+
+
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
+
+
+
+    // spring data JPA가 만들어놓은 구현체가 등록이 됨
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository()); // 스프링 빈에 등록된 memberRepository를 넣어줌
+        return new MemberService(memberRepository); // 스프링 빈에 등록된 memberRepository를 넣어줌
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
+//    @Bean
+//    public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
 //        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//        return new JpaMemberRepository(em);
+//    }
     // 컴포넌트 스캔을 쓰면 Repository 구현체만 바꾸는 게 불가능한데,
     // 이렇게 설정 파일을 쓰게 되면 다른 코드 수정 없이 리포지토리만 바꿀 수 있음 (설정 파일 쓰는 이유)
 }
