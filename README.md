@@ -1,44 +1,30 @@
 # Backend-Study
 
 ## 💡 소개
-> 백엔드 공부를 위한 학습 기록 저장소입니다.
+> 백엔드 개발자가 되기 위한 학습 저장소입니다.
 > 
-> Java, Spring, HTTP, Database 등 백엔드 전반적인 기술들을 학습하고 기록합니다.
+> 주요 학습 내용: Java, Spring Framework, 웹 서버, 데이터베이스
 
-## 📚 학습 강의
-인프런의 김영한님 강의를 수강하고 있습니다.
-- 실전! 자바 기본편 (자바 로드맵)
-- 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술 (스프링 로드맵)
-- 모든 개발자를 위한 HTTP 웹 기본 지식
+## 🗂 프로젝트 구조
+### 1. Java 기초 학습 (/java-basic)
+- 변수와 타입
+- 조건문과 반복문
+- 배열과 메서드
+- [상세 내용은 여기에서 확인](./java-basic/README.md)
 
-## 🗂 학습 내용
-### Java
-- 실전! 자바 기본편
-- Java 객체 지향 프로그래밍
-
-### Spring
-- 스프링 입문 - 코드로 배우는 스프링 부트, 웹 MVC, DB 접근 기술
-- 스프링 핵심 원리 - 기본편
-- 스프링 MVC
-
-### Web
-- 모든 개발자를 위한 HTTP 웹 기본 지식
-
-### Database
-- 추후 업데이트 예정
-
-## 📌 학습 규칙
-1. 강의 내용 학습 후 정리
-2. 실습 코드는 주석과 함께 기록
-3. 추가로 학습한 내용 기록
-4. 프로젝트 진행 시 설계 및 구현 과정 기록
+### 2. Spring 입문 (/spring-basic)
+- 스프링 핵심 원리: IoC, DI
+- 웹 MVC 패턴 구현
+- 회원 관리 예제 구현
+- [상세 내용은 여기에서 확인](./spring-basic/README.md)
 
 ## 🛠 개발 환경
 - Language: Java 17
-- Framework: Spring Boot
+- Framework: Spring Boot 3.x
 - IDE: IntelliJ IDEA
+- Build Tool: Gradle
 
-## 📝 학습 진행도
-- [x] Java 입문편 완료
-- [ ] 실전 Java 기본편 진행 중
-- [ ] HTTP 웹 기본 지식 진행 중
+## 📊 진행 상황
+- [x] Java 기초 문법 학습 완료
+- [ ] Spring Framework 학습 중
+- [ ] 다음 학습 계획: JPA, Spring Security
