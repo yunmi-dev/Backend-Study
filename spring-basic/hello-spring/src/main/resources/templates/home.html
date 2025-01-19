@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <div>
+        <h1>Hello Spring</h1>
+        <p>회원 기능</p>
+        <p>
+            <a href="/members/new">회원 가입</a>
+            <a href="/members">회원 목록</a>
+        </p>
+    </div>
+</div> <!-- /container -->
+
+</body>
+</html>
+
+<!-- 컨트롤러가 정적 파일(앞전에 welcome page로 만들었던 index.html)보다 우선순위가 높다. -->
+<!-- 접속해서 요청이 오면 내장 Tomcat 서버가 먼저 스프링 컨테이너에서 관련 컨트롤러부터 찾고, 없으면 static html 파일을 찾는다고 배웠었음 -->
