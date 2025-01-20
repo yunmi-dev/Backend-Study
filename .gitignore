@@ -27,11 +27,6 @@ replay_pid*
 .idea/
 *.iml
 
-# Build
-target/
-build/
-out/
-
 # Gradle
 .gradle/
 !gradle/wrapper/gradle-wrapper.jar
@@ -39,8 +34,14 @@ out/
 # Mac
 .DS_Store
 
-# Spring Boot
-HELP.md
+# Gradle & Build
+target/
+build/
+out/
+.gradle/
 gradle/
 gradlew
 gradlew.bat
+!gradle/wrapper/gradle-wrapper.jar
+HELP.md
+
