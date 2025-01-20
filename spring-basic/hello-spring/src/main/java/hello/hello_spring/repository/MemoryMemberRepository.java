@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+// 원래 코드는 메모리에 데이터를 저장하는 방식 -> 애플리케이션 종료되면 데이터 다 사라짐
 //@Repository
 public class MemoryMemberRepository implements MemberRepository {
 

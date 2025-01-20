@@ -6,6 +6,8 @@ import hello.hello_spring.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+//import javax.sql.DataSource;
+
 // 자바 코드로 직접 스프링 빈 등록하기
 
 @Configuration
