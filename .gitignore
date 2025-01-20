@@ -38,3 +38,9 @@ out/
 
 # Mac
 .DS_Store
+
+# Spring Boot
+HELP.md
+gradle/
+gradlew
+gradlew.bat

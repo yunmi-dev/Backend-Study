@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="container">
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}"> <!--자바의 forEach문과 같음: members 리스트 각 항목을 순회-->
+                <td th:text="${member.id}"></td> <!-- member.getId() 값을 표시 -->
+                <td th:text="${member.name}"></td><!-- member.getName() 값을 표시 -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div> <!-- /container -->
+
+</body>
+</html>
