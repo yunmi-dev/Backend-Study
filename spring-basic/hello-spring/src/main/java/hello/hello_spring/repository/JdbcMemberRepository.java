@@ -32,6 +32,7 @@ public class JdbcMemberRepository implements MemberRepository {
             conn = getConnection(); // DB 연결을 가져옴
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             // SQL 쿼리 준비 && RETURN_GENERATED_KEYS로 생성된 키값 받을 수 있게 설정함
+            // PreparedStatement에서는 String 안의 ?를 "나중에 값을 넣을 부분"으로 해석함
 
             pstmt.setString(1, member.getName());
             // ? 에 실제 값(회원의 name)을 설정함
@@ -64,7 +65,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
         try {
             conn = getConnection();
-            pstmt = conn.prepareStatement(sql);
+            pstmt = conn.prepareStatement(sql); // SQL문을 DB에 보내서 실행 계획을 세워두고, 반환값으로 PreparedStatement 객체를 줌
             /// SQL 인젝션 공격을 방지하고 쿼리를 안전하게 실행하기 위한 객체
             /// ?로 파라미터 표시하고, 나중에 setString() 등으로 값을 안전하게 설정
 
@@ -91,7 +92,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findByName(String name) {
-        String sql = "select * from member where name = ?";
+        String sql = "select * from member where name = ?"; // SQL 준비 (물음표로 표시)
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -99,10 +100,12 @@ public class JdbcMemberRepository implements MemberRepository {
 
         try {
             conn = getConnection(); // 여기서 예외가 발생할 수 있음
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, name);
+            pstmt = conn.prepareStatement(sql); // SQL을 미리 컴파일
+            pstmt.setString(1, name); // 물음표에 값 채우기
 
-            rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery(); // 실행
+            // -> 이 일련의 과정으로 해커가 악의적인 SQL 코드 주입 못함
+            //    (SQL문은 이미 컴파일돼 있고, ?에 들어가는 값은 무조건 "값"으로만 처리되기 때문)
 
             if (rs.next()) {
                 Member member = new Member();
@@ -156,6 +159,7 @@ public class JdbcMemberRepository implements MemberRepository {
         try {
             if (rs != null) {
                 rs.close();
+                // 데이터베이스에서 가져온 결과 담고 있는 메모리 공간을 해제
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,6 +167,7 @@ public class JdbcMemberRepository implements MemberRepository {
         try {
             if (pstmt != null) {
                 pstmt.close();
+                // SQL 쿼리를 위해 할당된 메모리와 DB 서버의 리소스를 해제
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -170,13 +175,19 @@ public class JdbcMemberRepository implements MemberRepository {
         try {
             if (conn != null) {
                 close(conn);
+                // 실제 데이터베이스와의 물리적 연결을 종료함
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        // 닫는 순서는 꼭 ResultSet → PreparedStatement → Connection
+        // ResultSet은 PreparedStatement에 의존적
+        // PreparedStatement는 Connection에 의존적
+        // 의존하는 객체가 먼저 닫혀야 안전함
     }
 
     private void close(Connection conn) throws SQLException {
         DataSourceUtils.releaseConnection(conn, dataSource);
+        // DataSource로부터 Connection 얻기
     }
 }
