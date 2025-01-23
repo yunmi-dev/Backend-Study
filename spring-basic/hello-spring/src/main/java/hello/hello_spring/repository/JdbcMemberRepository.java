@@ -68,7 +68,7 @@ public class JdbcMemberRepository implements MemberRepository {
             pstmt = conn.prepareStatement(sql); // SQL문을 DB에 보내서 실행 계획을 세워두고, 반환값으로 PreparedStatement 객체를 줌
             /// SQL 인젝션 공격을 방지하고 쿼리를 안전하게 실행하기 위한 객체
             /// ?로 파라미터 표시하고, 나중에 setString() 등으로 값을 안전하게 설정
-
+            pstmt.setLong(1, id); // 파라미터 바인딩 (PreparedStatement에 값 설정)
             rs = pstmt.executeQuery();
             // SELECT문 실행할 땐 executeQuery()
             // INSERT, UPDATE, DELETE문 실행할 땐 executeUpdate()
