@@ -1,3 +1,4 @@
+// 빌드 도구 설정 파일 (Maven / Gradle 중 Gradle 사용)
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.1'
@@ -17,10 +18,12 @@ repositories {
 	mavenCentral()
 }
 
+/// 어떤 라이브러리 쓸 건지 설정
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
