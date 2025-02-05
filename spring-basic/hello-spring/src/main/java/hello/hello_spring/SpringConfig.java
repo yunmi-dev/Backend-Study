@@ -1,5 +1,6 @@
 package hello.hello_spring;
 
+import hello.hello_spring.aop.TimeTraceAop;
 import hello.hello_spring.repository.*;
 import hello.hello_spring.service.MemberService;
 import jakarta.persistence.EntityManager;
@@ -46,6 +47,12 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository); // 스프링 빈에 등록된 memberRepository를 넣어줌
     }
+
+    // AOP를 등록해서 쓰는구나를 알 수 있게 스프링 빈에 직접 등록해주는 게 좋음 -> 현 실습에선 컴포넌트 스캔 사용
+//    @Bean
+//    public TimeTraceAop timeTraceAop() {
+//        return new TimeTraceAop();
+//    }
 
 //    @Bean
 //    public MemberRepository memberRepository() {
