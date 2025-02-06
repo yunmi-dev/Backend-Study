@@ -26,5 +26,6 @@
 
 ## 📊 진행 상황
 - [x] Java 기초 문법 학습 완료
-- [ ] Spring Framework 학습 중
-- [ ] 다음 학습 계획: JPA, Spring Security
+- [x] Spring Framework, Spring Boot 기본 학습 완료
+- [ ] JPA 학습중
+- [ ] Spring 핵심원리 학습중
