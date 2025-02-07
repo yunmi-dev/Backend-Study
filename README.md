@@ -13,10 +13,17 @@
 - [상세 내용은 여기에서 확인](./java-basic/README.md)
 
 ### 2. Spring 입문 (/spring-basic)
-- 스프링 핵심 원리: IoC, DI
+- 스프링 핵심 원리: IoC, DI, AOP
 - 웹 MVC 패턴 구현
 - 회원 관리 예제 구현
+- JPA 경험
 - [상세 내용은 여기에서 확인](./spring-basic/README.md)
+
+### 3. Spring 핵심 원리 (/spring-core)
+- 객체 지향 설계와 스프링
+- 스프링 컨테이너와 스프링 빈
+- 싱글톤 컨테이너
+- [상세 내용은 여기에서 확인](./spring-core/README.md)
 
 ## 🛠 개발 환경
 - Language: Java 17
